@@ -1,0 +1,32 @@
+#include <stdio.h>
+struct marks {
+    float marks1;
+    float marks2;
+    float marks3;
+};
+struct student {
+    int roll_no;
+    char name[50];
+    struct marks m;
+};
+float total_marks(struct marks m) {
+    return m.marks1 + m.marks2 + m.marks3;
+}
+float percentage(struct marks m) {
+    return (total_marks(m) / 300) * 100;
+}
+int main() {
+    struct student s = {
+        101,
+        "John Doe",
+        {80, 70, 90}
+    };
+    printf("Roll No: %d\n", s.roll_no);
+    printf("Name: %s\n", s.name);
+    printf("Marks 1: %.2f\n", s.m.marks1);
+    printf("Marks 2: %.2f\n", s.m.marks2);
+    printf("Marks 3: %.2f\n", s.m.marks3);
+    printf("Total Marks: %.2f\n", total_marks(s.m));
+    printf("Percentage: %.2f\n", percentage(s.m));
+    return 0;
+}
